@@ -1,5 +1,5 @@
 {
-  "name": "ngrx-component-store-experiment",
+  "name": "playground",
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
@@ -37,7 +37,7 @@
     "@angular/platform-browser": "^10.1.0",
     "@angular/platform-browser-dynamic": "^10.1.0",
     "@angular/router": "^10.1.0",
-    "@nrwl/angular": "10.3.0",
+    "@nrwl/angular": "10.3.1",
     "rxjs": "~6.5.5",
     "zone.js": "^0.10.2"
   },
@@ -46,22 +46,27 @@
     "@angular/cli": "~10.1.3",
     "@angular/compiler-cli": "^10.1.0",
     "@angular/language-service": "^10.1.0",
-    "@nrwl/cli": "10.3.0",
-    "@nrwl/jest": "10.3.0",
-    "@nrwl/workspace": "10.3.0",
+    "@nrwl/cli": "10.3.1",
+    "@nrwl/cypress": "10.3.1",
+    "@nrwl/eslint-plugin-nx": "10.3.1",
+    "@nrwl/jest": "10.3.1",
+    "@nrwl/workspace": "10.3.1",
     "@types/jest": "26.0.8",
     "@types/node": "~8.9.4",
+    "@typescript-eslint/eslint-plugin": "4.3.0",
+    "@typescript-eslint/parser": "4.3.0",
     "codelyzer": "~5.0.1",
+    "cypress": "^4.1.0",
     "dotenv": "6.2.0",
     "eslint": "7.10.0",
+    "eslint-config-prettier": "6.0.0",
+    "eslint-plugin-cypress": "^2.10.3",
     "jest": "26.2.2",
     "jest-preset-angular": "8.3.1",
     "prettier": "2.0.4",
     "ts-jest": "26.4.0",
     "ts-node": "~7.0.0",
     "tslint": "~6.0.0",
-    "typescript": "~4.0.3",
-    "cypress": "^4.1.0",
-    "@nrwl/cypress": "10.3.0"
+    "typescript": "~4.0.3"
   }
 }

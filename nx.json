@@ -1,5 +1,5 @@
 {
-  "npmScope": "ngrx-component-store-experiment",
+  "npmScope": "playground",
   "affected": {
     "defaultBase": "master"
   },
@@ -22,5 +22,13 @@
       }
     }
   },
-  "projects": {}
+  "projects": {
+    "playground": {
+      "tags": []
+    },
+    "playground-e2e": {
+      "tags": [],
+      "implicitDependencies": ["playground"]
+    }
+  }
 }

@@ -7,7 +7,7 @@ import { BooksEntity } from './books.models';
 export const BOOKS_FEATURE_KEY = 'books';
 
 export interface State extends EntityState<BooksEntity> {
-  selectedId?: string | number; // which Books record has been selected
+  selectedId?: string; // which Books record has been selected
   loaded: boolean; // has the Books list been loaded
   error?: string | null; // last known error (if any)
 }

@@ -1,15 +1,11 @@
 import { BooksEntity } from './books.models';
 import { State, booksAdapter, initialState } from './books.reducer';
 import * as BooksSelectors from './books.selectors';
+import { createBooksEntity } from './books.spec.helper';
 
 describe('Books Selectors', () => {
   const ERROR_MSG = 'No Error Available';
   const getBooksId = (it) => it['id'];
-  const createBooksEntity = (id: string, name = '') =>
-    ({
-      id,
-      name: name || `name-${id}`,
-    } as BooksEntity);
 
   let state;
 

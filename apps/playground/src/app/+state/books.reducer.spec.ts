@@ -1,16 +1,9 @@
 import { BooksEntity } from './books.models';
 import * as BooksActions from './books.actions';
 import { State, initialState, reducer } from './books.reducer';
+import { createBooksEntity } from './books.spec.helper';
 
 describe('Books Reducer', () => {
-  const createBooksEntity = (id: string, name = '') =>
-    ({
-      id,
-      name: name || `name-${id}`,
-    } as BooksEntity);
-
-  beforeEach(() => {});
-
   describe('valid Books actions', () => {
     it('loadBooksSuccess should return set the list of known Books', () => {
       const books = [

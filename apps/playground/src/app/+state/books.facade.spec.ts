@@ -19,6 +19,7 @@ import {
   initialState,
   reducer,
 } from './books.reducer';
+import { createBooksEntity } from './books.spec.helper';
 
 interface TestSchema {
   books: State;
@@ -27,13 +28,6 @@ interface TestSchema {
 describe('BooksFacade', () => {
   let facade: BooksFacade;
   let store: Store<TestSchema>;
-  const createBooksEntity = (id: string, name = '') =>
-    ({
-      id,
-      name: name || `name-${id}`,
-    } as BooksEntity);
-
-  beforeEach(() => {});
 
   describe('used in NgModule', () => {
     beforeEach(() => {

@@ -1,13 +1,25 @@
 <header class="flex">
   <h1>Book App</h1>
 </header>
-<main>
+<main *ngIf="vm$ | async as vm">
   <h2>Blah</h2>
   <section>
     <playground-book-list></playground-book-list>
   </section>
 
   <section>
-    <playground-add-book-form></playground-add-book-form>
+    <div class="form-group">
+      <div class="form-check">
+        <input
+          type="checkbox"
+          class="form-check-input"
+          id="showForm"
+          (change)="showFormToggle()"
+        />
+        <label class="form-check-label" for="showForm">Add more books</label>
+      </div>
+    </div>
+
+    <playground-add-book-form *ngIf="vm.showForm"></playground-add-book-form>
   </section>
 </main>

@@ -12,11 +12,19 @@ import { BooksFacade } from './+state/books.facade';
 import { BookListComponent } from './book-list/book-list.component';
 import { AddBookFormComponent } from './add-book-form/add-book-form.component';
 import { BookStuffComponent } from './book-stuff/book-stuff.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [AppComponent, BookListComponent, AddBookFormComponent, BookStuffComponent],
+  declarations: [
+    AppComponent,
+    BookListComponent,
+    AddBookFormComponent,
+    BookStuffComponent,
+  ],
   imports: [
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     StoreModule.forRoot(
       {},
       {

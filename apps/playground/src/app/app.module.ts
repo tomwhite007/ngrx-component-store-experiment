@@ -9,9 +9,12 @@ import { environment } from '../environments/environment';
 import * as fromBooks from './+state/books.reducer';
 import { BooksEffects } from './+state/books.effects';
 import { BooksFacade } from './+state/books.facade';
+import { BookListComponent } from './book-list/book-list.component';
+import { AddBookFormComponent } from './add-book-form/add-book-form.component';
+import { BookStuffComponent } from './book-stuff/book-stuff.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, BookListComponent, AddBookFormComponent, BookStuffComponent],
   imports: [
     BrowserModule,
     StoreModule.forRoot(

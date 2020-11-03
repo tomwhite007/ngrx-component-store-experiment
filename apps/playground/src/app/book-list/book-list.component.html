@@ -1,0 +1,15 @@
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Title</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let book of books; let i = index">
+      <th scope="row">{{ i }}</th>
+      <td>{{ book.id }}</td>
+      <td>{{ book.title }}</td>
+    </tr>
+  </tbody>
+</table>

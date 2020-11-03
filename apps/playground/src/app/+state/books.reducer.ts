@@ -35,7 +35,13 @@ const booksReducer = createReducer(
   on(BooksActions.loadBooksSuccess, (state, { books }) =>
     booksAdapter.setAll(books, { ...state, loaded: true })
   ),
-  on(BooksActions.loadBooksFailure, (state, { error }) => ({ ...state, error }))
+  on(BooksActions.loadBooksFailure, (state, { error }) => ({
+    ...state,
+    error,
+  })),
+  on(BooksActions.updsertItem, (state, { item }) =>
+    booksAdapter.upsertOne(item, state)
+  )
 );
 
 export function reducer(state: State | undefined, action: Action) {

@@ -12,3 +12,8 @@ export const loadBooksFailure = createAction(
   '[Books] Load Books Failure',
   props<{ error: any }>()
 );
+
+export const updsertItem = createAction(
+  '[AppComponent] Update Item',
+  props<{ item: BooksEntity }>()
+);

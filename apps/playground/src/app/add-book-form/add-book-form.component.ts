@@ -2,6 +2,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   EventEmitter,
+  OnInit,
   Output,
 } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
@@ -21,7 +22,7 @@ export class AddBookFormComponent {
     title: new FormControl(''),
   });
 
-  upsertBook(book: BooksEntity) {
-    this.submittedBook.emit(book);
+  submit() {
+    this.submittedBook.emit(this.formGroup.value);
   }
 }

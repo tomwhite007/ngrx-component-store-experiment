@@ -1,13 +1,9 @@
 <header class="flex">
-  <h1>Book App</h1>
+  <h1>Books App</h1>
 </header>
-<main *ngIf="vm$ | async as vm">
-  <h2>Blah</h2>
-  <section>
-    <playground-book-list></playground-book-list>
-  </section>
 
-  <section>
+<main *ngIf="vm$ | async as vm">
+  <section class="mt-5 mb-5">
     <div class="form-group">
       <div class="form-check">
         <input
@@ -20,6 +16,39 @@
       </div>
     </div>
 
-    <playground-add-book-form *ngIf="vm.showForm"></playground-add-book-form>
+    <playground-add-book-form
+      *ngIf="vm.showForm"
+      (submittedBook)="upsertBook($event)"
+    ></playground-add-book-form>
+  </section>
+
+  <nav>
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          (click)="selectTab(0)"
+          [class.active]="vm.selectedTab === 0"
+          >Book List</a
+        >
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          (click)="selectTab(1)"
+          [class.active]="vm.selectedTab === 1"
+          >Other Book Stuff</a
+        >
+      </li>
+    </ul>
+  </nav>
+
+  <section [ngSwitch]="vm.selectedTab">
+    <playground-book-list
+      *ngSwitchCase="0"
+      [books]="vm.allbooks"
+    ></playground-book-list>
+
+    <playground-book-stuff *ngSwitchCase="1"></playground-book-stuff>
   </section>
 </main>

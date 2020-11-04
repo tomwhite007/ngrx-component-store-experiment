@@ -1,4 +1,4 @@
-<form [formGroup]="formGroup" (submit)="upsertBook($event)">
+<form [formGroup]="formGroup" (submit)="submit()">
   <div class="form-group">
     <label for="bookId">ISBN number</label>
     <input
@@ -6,7 +6,8 @@
       class="form-control"
       id="bookId"
       placeholder="Enter ISBN number"
-      [formGroupName]="'id'"
+      formControlName="id"
+      autocomplete="off"
     />
   </div>
   <div class="form-group">
@@ -16,7 +17,8 @@
       class="form-control"
       id="bookTitle"
       placeholder="Enter book title"
-      [formGroupName]="'title'"
+      formControlName="title"
+      autocomplete="off"
     />
   </div>
   <button type="submit" class="btn btn-primary">Add book</button>

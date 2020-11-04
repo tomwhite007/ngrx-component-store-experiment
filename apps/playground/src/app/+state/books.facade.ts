@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 
 import { select, Store, Action } from '@ngrx/store';
+import { BooksEntity } from './books.models';
 
 import * as fromBooks from './books.reducer';
 import * as BooksSelectors from './books.selectors';
+import * as BooksActions from './books.actions';
 
 @Injectable()
 export class BooksFacade {
@@ -13,7 +15,7 @@ export class BooksFacade {
 
   constructor(private store: Store<fromBooks.BooksPartialState>) {}
 
-  dispatch(action: Action) {
-    this.store.dispatch(action);
+  upsertBook(book: BooksEntity) {
+    this.store.dispatch(BooksActions.updsertItem({ item: book }));
   }
 }

@@ -51,14 +51,13 @@ describe('BooksFacade', () => {
       class RootModule {}
       TestBed.configureTestingModule({ imports: [RootModule] });
 
-      store = TestBed.get(Store);
       facade = TestBed.get(BooksFacade);
     });
 
     /**
      * The initially generated facade::loadAll() returns empty array
      */
-    it('loadAll() should return empty list with loaded == true', async (done) => {
+    it('should upsert one book', async (done) => {
       try {
         let list = await readFirst(facade.allBooks$);
         let isLoaded = await readFirst(facade.loaded$);
@@ -66,42 +65,14 @@ describe('BooksFacade', () => {
         expect(list.length).toBe(0);
         expect(isLoaded).toBe(false);
 
-        facade.dispatch(BooksActions.loadBooks());
+        const book: BooksEntity = { id: '123', title: 'test' };
+
+        facade.upsertBook(book);
 
         list = await readFirst(facade.allBooks$);
         isLoaded = await readFirst(facade.loaded$);
 
-        expect(list.length).toBe(0);
-        expect(isLoaded).toBe(true);
-
-        done();
-      } catch (err) {
-        done.fail(err);
-      }
-    });
-
-    /**
-     * Use `loadBooksSuccess` to manually update list
-     */
-    it('allBooks$ should return the loaded list; and loaded flag == true', async (done) => {
-      try {
-        let list = await readFirst(facade.allBooks$);
-        let isLoaded = await readFirst(facade.loaded$);
-
-        expect(list.length).toBe(0);
-        expect(isLoaded).toBe(false);
-
-        facade.dispatch(
-          BooksActions.loadBooksSuccess({
-            books: [createBooksEntity('AAA'), createBooksEntity('BBB')],
-          })
-        );
-
-        list = await readFirst(facade.allBooks$);
-        isLoaded = await readFirst(facade.loaded$);
-
-        expect(list.length).toBe(2);
-        expect(isLoaded).toBe(true);
+        expect(list.length).toBe(1);
 
         done();
       } catch (err) {

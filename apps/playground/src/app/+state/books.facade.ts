@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { select, Store, Action } from '@ngrx/store';
+import { select, Store } from '@ngrx/store';
 import { BooksEntity } from './books.models';
 
 import * as fromBooks from './books.reducer';

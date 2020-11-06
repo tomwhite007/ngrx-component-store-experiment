@@ -1,8 +1,14 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { BehaviorSubject, combineLatest } from 'rxjs';
+import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { BooksFacade } from './+state/books.facade';
 import { BooksEntity } from './+state/books.models';
+
+interface ComponentState {
+  allbooks: BooksEntity[];
+  showForm: boolean;
+  selectedTab: number;
+}
 
 @Component({
   selector: 'playground-root',
@@ -16,9 +22,10 @@ export class AppComponent {
     selectedTab: 0,
   });
 
-  vm$ = combineLatest([this.books.allBooks$, this.localState$]).pipe(
-    map(([allbooks, localState]) => ({ allbooks, ...localState }))
-  );
+  vm$: Observable<ComponentState> = combineLatest([
+    this.books.allBooks$,
+    this.localState$,
+  ]).pipe(map(([allbooks, localState]) => ({ allbooks, ...localState })));
 
   constructor(private books: BooksFacade) {}
 

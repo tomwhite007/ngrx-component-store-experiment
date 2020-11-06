@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ComponentStore } from '@ngrx/component-store/src/component-store';
 import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { BooksFacade } from './+state/books.facade';
@@ -22,26 +23,24 @@ export class AppComponent {
     selectedTab: 0,
   });
 
-  vm$: Observable<ComponentState> = combineLatest([
-    this.books.allBooks$,
-    this.localState$,
-  ]).pipe(map(([allbooks, localState]) => ({ allbooks, ...localState })));
+  readonly vm$: Observable<ComponentState> = this.componentStore.select(
+    (state) => state
+  );
 
-  constructor(private books: BooksFacade) {}
+  constructor(
+    private books: BooksFacade,
+    private readonly componentStore: ComponentStore<ComponentState>
+  ) {}
 
-  showFormToggle() {
-    this.localState$.next({
-      ...this.localState$.value,
-      showForm: !this.localState$.value.showForm,
-    });
-  }
+  readonly showFormToggle = this.componentStore.updater((state) => ({
+    ...state,
+    showForm: !this.localState$.value.showForm,
+  }));
 
-  selectTab(tabNo: number) {
-    this.localState$.next({
-      ...this.localState$.value,
-      selectedTab: tabNo,
-    });
-  }
+  readonly selectTab = this.componentStore.updater((state, tabNo: number) => ({
+    ...state,
+    selectedTab: tabNo,
+  }));
 
   upsertBook(book: BooksEntity) {
     this.books.upsertBook(book);

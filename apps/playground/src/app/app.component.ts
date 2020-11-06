@@ -1,12 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ComponentStore } from '@ngrx/component-store/src/component-store';
-import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { ComponentStore } from '@ngrx/component-store';
 import { BooksFacade } from './+state/books.facade';
 import { BooksEntity } from './+state/books.models';
 
-interface ComponentState {
-  allbooks: BooksEntity[];
+interface LocalState {
   showForm: boolean;
   selectedTab: number;
 }
@@ -17,27 +14,26 @@ interface ComponentState {
   styleUrls: ['./app.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AppComponent {
-  private localState$ = new BehaviorSubject({
-    showForm: false,
-    selectedTab: 0,
-  });
-
-  readonly vm$: Observable<ComponentState> = this.componentStore.select(
-    (state) => state
+export class AppComponent extends ComponentStore<LocalState> {
+  readonly vm$ = this.select(
+    this.select((state) => state),
+    this.books.allBooks$,
+    (LocalState, allBooks) => ({ ...LocalState, allBooks })
   );
 
-  constructor(
-    private books: BooksFacade,
-    private readonly componentStore: ComponentStore<ComponentState>
-  ) {}
+  constructor(private books: BooksFacade) {
+    super({
+      showForm: false,
+      selectedTab: 0,
+    });
+  }
 
-  readonly showFormToggle = this.componentStore.updater((state) => ({
+  readonly showFormToggle = this.updater((state) => ({
     ...state,
-    showForm: !this.localState$.value.showForm,
+    showForm: !state.showForm,
   }));
 
-  readonly selectTab = this.componentStore.updater((state, tabNo: number) => ({
+  readonly selectTab = this.updater((state, tabNo: number) => ({
     ...state,
     selectedTab: tabNo,
   }));

@@ -14,26 +14,29 @@ interface LocalState {
   styleUrls: ['./app.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AppComponent extends ComponentStore<LocalState> {
-  readonly vm$ = this.select(
-    this.select((state) => state),
+export class AppComponent {
+  readonly vm$ = this.componentStore.select(
+    this.componentStore.select((state) => state),
     this.books.allBooks$,
     (LocalState, allBooks) => ({ ...LocalState, allBooks })
   );
 
-  constructor(private books: BooksFacade) {
-    super({
+  constructor(
+    private books: BooksFacade,
+    private componentStore: ComponentStore<LocalState>
+  ) {
+    this.componentStore.setState({
       showForm: false,
       selectedTab: 0,
     });
   }
 
-  readonly showFormToggle = this.updater((state) => ({
+  readonly showFormToggle = this.componentStore.updater((state) => ({
     ...state,
     showForm: !state.showForm,
   }));
 
-  readonly selectTab = this.updater((state, tabNo: number) => ({
+  readonly selectTab = this.componentStore.updater((state, tabNo: number) => ({
     ...state,
     selectedTab: tabNo,
   }));

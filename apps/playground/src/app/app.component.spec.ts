@@ -1,5 +1,6 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
+import { ComponentStore } from '@ngrx/component-store';
 import { of } from 'rxjs';
 import { BooksFacade } from './+state/books.facade';
 import { AppComponent } from './app.component';
@@ -12,7 +13,10 @@ describe('AppComponent', () => {
     };
     await TestBed.configureTestingModule({
       declarations: [AppComponent],
-      providers: [{ provide: BooksFacade, useValue: mockFacade }],
+      providers: [
+        { provide: BooksFacade, useValue: mockFacade },
+        ComponentStore,
+      ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
     }).compileComponents();
   });

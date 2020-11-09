@@ -1,12 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ComponentStore } from '@ngrx/component-store/src/component-store';
-import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { ComponentStore } from '@ngrx/component-store';
 import { BooksFacade } from './+state/books.facade';
 import { BooksEntity } from './+state/books.models';
 
-interface ComponentState {
-  allbooks: BooksEntity[];
+interface LocalState {
   showForm: boolean;
   selectedTab: number;
 }
@@ -18,23 +15,25 @@ interface ComponentState {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
-  private localState$ = new BehaviorSubject({
-    showForm: false,
-    selectedTab: 0,
-  });
-
-  readonly vm$: Observable<ComponentState> = this.componentStore.select(
-    (state) => state
+  readonly vm$ = this.componentStore.select(
+    this.componentStore.select((state) => state),
+    this.books.allBooks$,
+    (LocalState, allBooks) => ({ ...LocalState, allBooks })
   );
 
   constructor(
     private books: BooksFacade,
-    private readonly componentStore: ComponentStore<ComponentState>
-  ) {}
+    private componentStore: ComponentStore<LocalState>
+  ) {
+    this.componentStore.setState({
+      showForm: false,
+      selectedTab: 0,
+    });
+  }
 
   readonly showFormToggle = this.componentStore.updater((state) => ({
     ...state,
-    showForm: !this.localState$.value.showForm,
+    showForm: !state.showForm,
   }));
 
   readonly selectTab = this.componentStore.updater((state, tabNo: number) => ({

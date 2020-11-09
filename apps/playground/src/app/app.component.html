@@ -46,7 +46,7 @@
   <section [ngSwitch]="vm.selectedTab">
     <playground-book-list
       *ngSwitchCase="0"
-      [books]="vm.allbooks"
+      [books]="vm.allBooks"
     ></playground-book-list>
 
     <playground-book-stuff *ngSwitchCase="1"></playground-book-stuff>

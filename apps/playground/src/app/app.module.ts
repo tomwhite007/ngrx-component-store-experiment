@@ -13,6 +13,7 @@ import { BookListComponent } from './book-list/book-list.component';
 import { AddBookFormComponent } from './add-book-form/add-book-form.component';
 import { BookStuffComponent } from './book-stuff/book-stuff.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ComponentStore } from '@ngrx/component-store';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     StoreModule.forFeature(fromBooks.BOOKS_FEATURE_KEY, fromBooks.reducer),
     EffectsModule.forFeature([BooksEffects]),
   ],
-  providers: [BooksFacade],
+  providers: [BooksFacade, ComponentStore],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

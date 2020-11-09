@@ -23,6 +23,8 @@ export class AppComponentStateService extends ComponentStore<LocalState> {
     });
   }
 
+  // Updaters
+
   readonly toggleShowForm = this.updater((state) => ({
     ...state,
     showForm: !state.showForm,
@@ -32,6 +34,8 @@ export class AppComponentStateService extends ComponentStore<LocalState> {
     ...state,
     selectedTab: tabNo,
   }));
+
+  // Global state
 
   upsertBook(book: BooksEntity) {
     this.books.upsertBook(book);

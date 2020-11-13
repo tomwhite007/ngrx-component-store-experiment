@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { BooksFacade } from './+state/books.facade';
 import { BooksEntity } from './+state/books.models';
 import { AppComponentStateService } from './app-component-state.service';
 
@@ -11,22 +10,19 @@ import { AppComponentStateService } from './app-component-state.service';
   providers: [AppComponentStateService],
 })
 export class AppComponent {
-  vm$ = this.localState.vm$;
+  vm$ = this.state.vm$;
 
-  constructor(
-    private books: BooksFacade,
-    private localState: AppComponentStateService
-  ) {}
+  constructor(private state: AppComponentStateService) {}
 
   toggleShowForm() {
-    this.localState.toggleShowForm();
+    this.state.toggleShowForm();
   }
 
   selectTab(tabNo: number) {
-    this.localState.selectTab(tabNo);
+    this.state.setSelectedTab(tabNo);
   }
 
   upsertBook(book: BooksEntity) {
-    this.books.upsertBook(book);
+    this.state.upsertBook(book);
   }
 }

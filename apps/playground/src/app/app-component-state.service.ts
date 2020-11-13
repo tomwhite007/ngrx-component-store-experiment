@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ComponentStore } from '@ngrx/component-store';
 import { BooksFacade } from './+state/books.facade';
+import { BooksEntity } from './+state/books.models';
 
 interface LocalState {
   showForm: boolean;
@@ -27,8 +28,12 @@ export class AppComponentStateService extends ComponentStore<LocalState> {
     showForm: !state.showForm,
   }));
 
-  readonly selectTab = this.updater((state, tabNo: number) => ({
+  readonly setSelectedTab = this.updater((state, tabNo: number) => ({
     ...state,
     selectedTab: tabNo,
   }));
+
+  upsertBook(book: BooksEntity) {
+    this.books.upsertBook(book);
+  }
 }

@@ -11,9 +11,9 @@ interface LocalState {
 @Injectable()
 export class AppComponentStateService extends ComponentStore<LocalState> {
   readonly vm$ = this.select(
-    this.select((state) => state),
-    this.books.allBooks$,
-    (LocalState, allBooks) => ({ ...LocalState, allBooks })
+    this.select((state) => state), // all component state selector
+    this.books.allBooks$, // global state selector
+    (LocalState, allBooks) => ({ ...LocalState, allBooks }) // projector
   );
 
   constructor(private books: BooksFacade) {

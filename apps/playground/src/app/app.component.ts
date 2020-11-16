@@ -12,6 +12,7 @@ import { AppComponentStateService } from './app-component-state.service';
 export class AppComponent {
   vm$ = this.state.vm$;
 
+  // one service injected for both component and global state
   constructor(private state: AppComponentStateService) {}
 
   toggleShowForm() {

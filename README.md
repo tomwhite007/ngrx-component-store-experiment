@@ -26,11 +26,15 @@ This is the recommended structure by NgRx team, for when your local state is com
 
 The service extends the Component Store so that it doesn't require DI and reduces a little boilerplate.
 
+[Link to PR Feature/factor component state into service #4](https://github.com/tomwhite007/ngrx-component-store-experiment/pull/4)
+
 ### [feature/add-demo-effect](https://github.com/tomwhite007/ngrx-component-store-experiment/tree/feature/add-demo-effect)
 
 This branch adds a dummy Google Analytics event to demonstrate how Component Store Effects might be used.
 
 Component Store Updaters and Effects have a lot of overlap; both can be triggered by Observable streams or function calls, and both are asyncronous. The only obvious difference is that effects don't update the state unless they call updaters.
+
+[Link to PR Feature/add demo effect #5](https://github.com/tomwhite007/ngrx-component-store-experiment/pull/5)
 
 ## Links
 

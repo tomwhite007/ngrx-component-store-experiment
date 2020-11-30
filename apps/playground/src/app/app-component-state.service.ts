@@ -9,6 +9,7 @@ interface LocalState {
   showForm: boolean;
   selectedTab: number;
 }
+
 declare global {
   interface Window {
     dataLayer: unknown[];

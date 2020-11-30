@@ -2,6 +2,8 @@
 
 This project is to show a progressive exploration of NgRx Component Store, as compared to using a BehaviourSubject to store local state in a view model object.
 
+The code is in an [App](https://github.com/tomwhite007/ngrx-component-store-experiment/blob/main/apps/playground/src/app/app.component.ts), inside a Nrwl Nx Workspace. I used Nx because it comes with an excellent schematic for scaffolding the global NgRx state - so I could make this demo quicker.
+
 The progression is in the form of branches on this repo, as follows:
 
 ### [main](https://github.com/tomwhite007/ngrx-component-store-experiment)

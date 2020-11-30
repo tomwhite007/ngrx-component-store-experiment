@@ -1,6 +1,13 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ComponentStore } from '@ngrx/component-store';
+import { BooksFacade } from './+state/books.facade';
 import { BooksEntity } from './+state/books.models';
 import { AppComponentStateService } from './app-component-state.service';
+
+interface LocalState {
+  showForm: boolean;
+  selectedTab: number;
+}
 
 @Component({
   selector: 'playground-root',

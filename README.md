@@ -16,7 +16,7 @@ The base branch contains an example app (Book App) using a BehaviourSubject to s
 
 This branch converts the BehaviourSubject into Component Store, using direct commands to the NgRx lib.
 
-It is pretty much the same amount of code as `main` branch, (maybe one line more), but now benefits from Type safety and fixed interface for the local state.
+It is pretty much the same amount of code as `main` branch, (maybe one line more).
 
 [Link to PR Feature/convert to ngrx component store #1](https://github.com/tomwhite007/ngrx-component-store-experiment/pull/1)
 

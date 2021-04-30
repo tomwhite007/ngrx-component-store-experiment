@@ -1,5 +1,4 @@
 {
-  "npmScope": "playground",
   "affected": {
     "defaultBase": "master"
   },
@@ -14,6 +13,7 @@
     ".eslintrc.json": "*",
     "nx.json": "*"
   },
+  "npmScope": "bus-demo",
   "tasksRunnerOptions": {
     "default": {
       "runner": "@nrwl/workspace/tasks-runners/default",
@@ -23,12 +23,15 @@
     }
   },
   "projects": {
-    "playground": {
+    "gyrus-ui-io-bus": {
       "tags": []
     },
-    "playground-e2e": {
+    "bus-demo": {
+      "tags": []
+    },
+    "bus-demo-e2e": {
       "tags": [],
-      "implicitDependencies": ["playground"]
+      "implicitDependencies": ["bus-demo"]
     }
   }
 }

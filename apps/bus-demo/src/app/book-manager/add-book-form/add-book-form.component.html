@@ -1,0 +1,29 @@
+<ng-container *ngIf="showForm">
+  <form [formGroup]="formGroup" (submit)="submit()">
+    <div class="form-group">
+      <label for="bookId">ISBN number</label>
+      <input
+        type="text"
+        class="form-control"
+        id="bookId"
+        placeholder="Enter ISBN number"
+        formControlName="id"
+        autocomplete="off"
+      />
+    </div>
+    <div class="form-group">
+      <label for="bookTitle">Title</label>
+      <input
+        type="text"
+        class="form-control"
+        id="bookTitle"
+        placeholder="Enter book title"
+        formControlName="title"
+        autocomplete="off"
+      />
+    </div>
+    <button type="submit" class="btn btn-primary">
+      {{ buttonText }}
+    </button>
+  </form>
+</ng-container>

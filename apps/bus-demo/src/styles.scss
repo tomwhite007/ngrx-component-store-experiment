@@ -1,0 +1,35 @@
+header {
+  background-color: #143055;
+  color: white;
+  padding: 5px;
+  border-radius: 3px;
+}
+
+main {
+  padding: 0 36px;
+}
+
+h1 {
+  text-align: center;
+  margin-left: 18px;
+  font-size: 24px;
+}
+
+h2 {
+  text-align: center;
+  font-size: 20px;
+  margin: 40px 0 10px 0;
+}
+
+pre {
+  padding: 9px;
+  border-radius: 4px;
+  background-color: black;
+  color: #eee;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

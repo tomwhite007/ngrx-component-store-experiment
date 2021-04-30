@@ -1,0 +1,34 @@
+<header class="flex">
+  <h1>Books App</h1>
+</header>
+
+<main *ngIf="vm$ | async as vm">
+  <section class="mt-5 mb-5">
+    <app-show-form-checkbox
+      [checked]="vm.showForm"
+      (changed)="toggleShowForm()"
+      [updateMode]="!!vm.selectedId"
+    ></app-show-form-checkbox>
+
+    <app-add-book-form
+      [showForm]="vm.showForm"
+      (submittedBook)="upsertBook($event)"
+      [selectedBook]="vm.selectedBook"
+    ></app-add-book-form>
+  </section>
+
+  <app-tabs
+    [selectedTab]="vm.selectedTab"
+    (tabSelected)="selectTab($event)"
+    [ngSwitch]="vm.selectedTab"
+  >
+    <app-book-list
+      *ngSwitchCase="0"
+      [books]="vm.allBooks"
+      (selectBook)="selectBook($event)"
+      [selectedId]="vm.selectedId"
+    ></app-book-list>
+
+    <app-book-stuff *ngSwitchCase="1"></app-book-stuff>
+  </app-tabs>
+</main>

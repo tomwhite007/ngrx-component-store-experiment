@@ -1,3 +1,3 @@
 module.exports = {
-  projects: ['<rootDir>/apps/playground'],
+  projects: ['<rootDir>/apps/bus-demo', '<rootDir>/libs/gyrus/ui-io-bus'],
 };

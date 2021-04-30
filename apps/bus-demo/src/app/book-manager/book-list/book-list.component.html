@@ -1,0 +1,18 @@
+<table class="table mt-4">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">ISBN</th>
+      <th scope="col">Title</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+      *ngFor="let book of books; trackBy: trackByFn; let i = index"
+      (click)="handleClick(i)"
+      [ngClass]="{ selected: book.id === selectedId }"
+    >
+      <td>{{ book.id }}</td>
+      <td>{{ book.title }}</td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,8 @@
+tr {
+  cursor: pointer;
+  user-select: none;
+}
+
+tr.selected {
+  background-color: #95dcf1;
+}

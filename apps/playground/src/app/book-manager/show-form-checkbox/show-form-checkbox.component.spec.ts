@@ -8,9 +8,8 @@ describe('ShowFormCheckboxComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ShowFormCheckboxComponent ]
-    })
-    .compileComponents();
+      declarations: [ShowFormCheckboxComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

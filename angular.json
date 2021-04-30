@@ -34,43 +34,6 @@
     }
   },
   "projects": {
-    "gyrus-ui-io-bus": {
-      "projectType": "library",
-      "root": "libs/gyrus/ui-io-bus",
-      "sourceRoot": "libs/gyrus/ui-io-bus/src",
-      "prefix": "playground",
-      "architect": {
-        "build": {
-          "builder": "@nrwl/angular:package",
-          "options": {
-            "tsConfig": "libs/gyrus/ui-io-bus/tsconfig.lib.json",
-            "project": "libs/gyrus/ui-io-bus/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "tsConfig": "libs/gyrus/ui-io-bus/tsconfig.lib.prod.json"
-            }
-          }
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/gyrus/ui-io-bus/src/**/*.ts",
-              "libs/gyrus/ui-io-bus/src/**/*.html"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/gyrus/ui-io-bus"],
-          "options": {
-            "jestConfig": "libs/gyrus/ui-io-bus/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
     "playground": {
       "projectType": "application",
       "schematics": {

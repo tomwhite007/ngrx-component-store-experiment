@@ -23,9 +23,6 @@
     }
   },
   "projects": {
-    "gyrus-ui-io-bus": {
-      "tags": []
-    },
     "playground": {
       "tags": []
     },

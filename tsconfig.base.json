@@ -16,7 +16,6 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@gyrus/ui-io-bus": ["libs/gyrus/ui-io-bus/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"],

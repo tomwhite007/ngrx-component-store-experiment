@@ -1,6 +1,6 @@
 module.exports = {
-  displayName: 'gyrus-ui-io-bus',
-  preset: '../../../jest.preset.js',
+  displayName: 'playground',
+  preset: '../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
     'ts-jest': {
@@ -14,7 +14,7 @@ module.exports = {
       },
     },
   },
-  coverageDirectory: '../../../coverage/libs/gyrus/ui-io-bus',
+  coverageDirectory: '../../coverage/apps/playground',
   snapshotSerializers: [
     'jest-preset-angular/build/AngularNoNgAttributesSnapshotSerializer.js',
     'jest-preset-angular/build/AngularSnapshotSerializer.js',

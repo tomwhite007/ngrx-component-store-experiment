@@ -1,77 +1,72 @@
 {
   "version": 1,
-  "defaultProject": "bus-demo",
-  "projects": {
-    "gyrus-ui-io-bus": {
-      "projectType": "library",
-      "root": "libs/gyrus/ui-io-bus",
-      "sourceRoot": "libs/gyrus/ui-io-bus/src",
-      "prefix": "iobus",
-      "architect": {
-        "build": {
-          "builder": "@nrwl/angular:package",
-          "options": {
-            "tsConfig": "libs/gyrus/ui-io-bus/tsconfig.lib.json",
-            "project": "libs/gyrus/ui-io-bus/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "tsConfig": "libs/gyrus/ui-io-bus/tsconfig.lib.prod.json"
-            }
-          }
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/gyrus/ui-io-bus/src/**/*.ts",
-              "libs/gyrus/ui-io-bus/src/**/*.html"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/gyrus/ui-io-bus"],
-          "options": {
-            "jestConfig": "libs/gyrus/ui-io-bus/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
+  "cli": {
+    "defaultCollection": "@nrwl/angular",
+    "analytics": "728d5b08-df50-430b-8111-f983da24f9eb"
+  },
+  "defaultProject": "playground",
+  "schematics": {
+    "@nrwl/angular": {
+      "application": {
+        "linter": "eslint"
+      },
+      "library": {
+        "linter": "eslint"
+      },
+      "storybook-configuration": {
+        "linter": "eslint"
       }
     },
-    "bus-demo": {
+    "@nrwl/angular:application": {
+      "style": "scss",
+      "linter": "eslint",
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "style": "scss",
+      "linter": "eslint",
+      "unitTestRunner": "jest",
+      "strict": true
+    },
+    "@nrwl/angular:component": {
+      "style": "scss"
+    }
+  },
+  "projects": {
+    "playground": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
           "style": "scss"
         }
       },
-      "root": "apps/bus-demo",
-      "sourceRoot": "apps/bus-demo/src",
+      "root": "apps/playground",
+      "sourceRoot": "apps/playground/src",
       "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/apps/bus-demo",
-            "index": "apps/bus-demo/src/index.html",
-            "main": "apps/bus-demo/src/main.ts",
-            "polyfills": "apps/bus-demo/src/polyfills.ts",
-            "tsConfig": "apps/bus-demo/tsconfig.app.json",
+            "outputPath": "dist/apps/playground",
+            "index": "apps/playground/src/index.html",
+            "main": "apps/playground/src/main.ts",
+            "polyfills": "apps/playground/src/polyfills.ts",
+            "tsConfig": "apps/playground/tsconfig.app.json",
             "aot": true,
             "assets": [
-              "apps/bus-demo/src/favicon.ico",
-              "apps/bus-demo/src/assets"
+              "apps/playground/src/favicon.ico",
+              "apps/playground/src/assets"
             ],
-            "styles": ["apps/bus-demo/src/styles.scss"],
+            "styles": ["apps/playground/src/styles.scss"],
             "scripts": []
           },
           "configurations": {
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "apps/bus-demo/src/environments/environment.ts",
-                  "with": "apps/bus-demo/src/environments/environment.prod.ts"
+                  "replace": "apps/playground/src/environments/environment.ts",
+                  "with": "apps/playground/src/environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
@@ -100,129 +95,60 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "bus-demo:build"
+            "browserTarget": "playground:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "bus-demo:build:production"
+              "browserTarget": "playground:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "bus-demo:build"
+            "browserTarget": "playground:build"
           }
         },
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/bus-demo/src/**/*.ts"]
+            "lintFilePatterns": ["apps/playground/src/**/*.ts"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "apps/bus-demo/jest.config.js",
+            "jestConfig": "apps/playground/jest.config.js",
             "passWithNoTests": true
           }
         }
       }
     },
-    "bus-demo-e2e": {
-      "root": "apps/bus-demo-e2e",
-      "sourceRoot": "apps/bus-demo-e2e/src",
+    "playground-e2e": {
+      "root": "apps/playground-e2e",
+      "sourceRoot": "apps/playground-e2e/src",
       "projectType": "application",
       "architect": {
         "e2e": {
           "builder": "@nrwl/cypress:cypress",
           "options": {
-            "cypressConfig": "apps/bus-demo-e2e/cypress.json",
-            "tsConfig": "apps/bus-demo-e2e/tsconfig.e2e.json",
-            "devServerTarget": "bus-demo:serve"
+            "cypressConfig": "apps/playground-e2e/cypress.json",
+            "tsConfig": "apps/playground-e2e/tsconfig.e2e.json",
+            "devServerTarget": "playground:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "bus-demo:serve:production"
+              "devServerTarget": "playground:serve:production"
             }
           }
         },
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/bus-demo-e2e/**/*.{js,ts}"]
+            "lintFilePatterns": ["apps/playground-e2e/**/*.{js,ts}"]
           }
         }
       }
-    },
-    "gyrus-ui-io-bus": {
-      "projectType": "library",
-      "root": "libs/gyrus/ui-io-bus",
-      "sourceRoot": "libs/gyrus/ui-io-bus/src",
-      "prefix": "playground",
-      "architect": {
-        "build": {
-          "builder": "@nrwl/angular:package",
-          "options": {
-            "tsConfig": "libs/gyrus/ui-io-bus/tsconfig.lib.json",
-            "project": "libs/gyrus/ui-io-bus/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "tsConfig": "libs/gyrus/ui-io-bus/tsconfig.lib.prod.json"
-            }
-          }
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/gyrus/ui-io-bus/src/**/*.ts",
-              "libs/gyrus/ui-io-bus/src/**/*.html"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/gyrus/ui-io-bus"],
-          "options": {
-            "jestConfig": "libs/gyrus/ui-io-bus/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
-    }
-  },
-  "cli": {
-    "defaultCollection": "@nrwl/angular",
-    "analytics": "728d5b08-df50-430b-8111-f983da24f9eb"
-  },
-  "schematics": {
-    "@nrwl/angular": {
-      "application": {
-        "linter": "eslint"
-      },
-      "library": {
-        "linter": "eslint"
-      },
-      "storybook-configuration": {
-        "linter": "eslint"
-      }
-    },
-    "@nrwl/angular:application": {
-      "style": "scss",
-      "linter": "eslint",
-      "unitTestRunner": "jest",
-      "e2eTestRunner": "cypress"
-    },
-    "@nrwl/angular:library": {
-      "style": "scss",
-      "linter": "eslint",
-      "unitTestRunner": "jest",
-      "strict": true
-    },
-    "@nrwl/angular:component": {
-      "style": "scss"
     }
   }
 }

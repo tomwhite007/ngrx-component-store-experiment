@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { UiIoBusLoggerService } from '@gyrus/ui-io-bus';
 import { BooksEntity } from '../+state/books.models';
 import { BookManagerComponentStateService } from './book-manager-component-state.service';
 
@@ -12,17 +11,13 @@ import { BookManagerComponentStateService } from './book-manager-component-state
 export class BookManagerComponent implements OnInit {
   vm$ = this.state.vm$;
 
-  constructor(
-    private state: BookManagerComponentStateService,
-    private log: UiIoBusLoggerService
-  ) {}
+  constructor(private state: BookManagerComponentStateService) {}
 
   ngOnInit() {
     this.state.loadBooks();
   }
 
   toggleShowForm() {
-    this.log.dummyStyledLog();
     this.state.toggleShowForm();
   }
 

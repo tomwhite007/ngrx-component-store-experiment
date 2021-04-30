@@ -1,7 +1,4 @@
 {
-  "affected": {
-    "defaultBase": "master"
-  },
   "implicitDependencies": {
     "angular.json": "*",
     "package.json": {
@@ -13,6 +10,9 @@
     ".eslintrc.json": "*",
     "nx.json": "*"
   },
+  "affected": {
+    "defaultBase": "master"
+  },
   "npmScope": "bus-demo",
   "tasksRunnerOptions": {
     "default": {
@@ -23,15 +23,12 @@
     }
   },
   "projects": {
-    "gyrus-ui-io-bus": {
+    "playground": {
       "tags": []
     },
-    "bus-demo": {
-      "tags": []
-    },
-    "bus-demo-e2e": {
+    "playground-e2e": {
       "tags": [],
-      "implicitDependencies": ["bus-demo"]
+      "implicitDependencies": ["playground"]
     }
   }
 }
